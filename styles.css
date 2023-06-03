@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100svh;
+
+}
+#boxes-container{
+    aspect-ratio: 1/1;
+    
+    flex-shrink: 1;
+    flex-basis: 600px;
+    
+}
+
+.brutal{
+    border: black solid 4px;
+    border-radius: 7px;
+    box-shadow: black 5px 5px 0px;
+}
