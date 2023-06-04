@@ -9,11 +9,15 @@ body{
     background-color: #FFC0CB;
 }
 #boxes-container{
+    position: relative;
     margin: 0 auto;
     aspect-ratio: 1/1;
     height: calc((50svh + 50svw) / 2);
     flex-shrink: 1;
     
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     
 }
 #controls-container{
@@ -24,7 +28,7 @@ body{
     justify-content: space-around;
     align-items: center;
     width: calc(((50svh + 50svw) / 2)/4);
-    position: relative;
+    position: absolute;
     left: calc((((50svh + 50svw) / 2)/4 * -1) - 30px);
     top: -4px;
     padding-top: 20px;
@@ -72,17 +76,33 @@ input:hover{
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-around;
-        position: relative;
+        position: absolute;
         top: calc(((50svh + 50svw) / 2) + 20px);
         left: -3px;
         width: 100%;
     }
-    #selected-color{
-        margin-left: auto;
-        margin-right: 10px;
+    #sliders{
+        width: 40%;
+        padding-left: auto;
+        padding-right: auto;
+    }
+    #color-container{
+        width: 40%;
+        display: flex;
+        justify-content: center;
     }
 }
-
+.row{
+    display: flex;
+    flex: auto;
+    width: 100%;
+}
+.tile{
+    flex: auto;
+    height: 100%;
+    border: black solid 2px;
+    background-color: white;
+}
 
 .brutal{
     border: black solid 4px;
