@@ -20,19 +20,40 @@ body{
     background-color: #F4D738;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     justify-content: space-around;
-
+    align-items: center;
     width: calc(((50svh + 50svw) / 2)/4);
     position: relative;
     left: calc((((50svh + 50svw) / 2)/4 * -1) - 30px);
     top: -4px;
+    padding-top: 20px;
 }
-#red{
+input{
     appearance: none;
-    border-radius: 5px;
-    background-color: red;
-    
+    background-color: red; 
+    width: 75%;
+    height: 20px;
+    transition-property: width, height;
+    transition: 0.5s;
+}
+#selected-color{
+    height:50px;
+    width:50px;
+}
+input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 15px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+input:hover{
+    width: 80%;
+    height: 35px;
 }
 
 
@@ -40,6 +61,10 @@ body{
 
 .brutal{
     border: black solid 4px;
-    border-radius: 7px;
-    box-shadow: black 5px 5px 0px;
+    border-radius: 3%;
+    box-shadow: black 3px 3px 0px;
+}
+.brutal-shadowless{
+    border: black solid 4px;
+    border-radius: 5px;
 }
