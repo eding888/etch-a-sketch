@@ -11,6 +11,9 @@ let color = 'hsl(' + hue + ', 100%, ' + brightness +'%)';
 let dimensions = 20;
 let random = false;
 let clicking = false;
+
+
+
 const brutalColors = [
   "#87CEEB",
   "#A7DBD8",
@@ -60,6 +63,8 @@ randomizeButton.addEventListener("click", () =>{
 
 document.addEventListener("mousedown", () =>{
   clicking = true;
+  const clickedItem = event.target;
+  if (clickedItem.classList.contains('tile')) draw(clickedItem, true);
 })
 document.addEventListener("mouseup", () =>{
   clicking = false;
@@ -67,21 +72,27 @@ document.addEventListener("mouseup", () =>{
 
 itemsContainer.addEventListener('mouseover', function(event) {
   const clickedItem = event.target;
-  if (clickedItem.classList.contains('tile') && clicking) { 
-    if(random) clickedItem.style.backgroundColor = brutalColors[Math.floor(Math.random() * brutalColors.length)];
-    else clickedItem.style.backgroundColor = color;
-  }
-  
+  if (clickedItem.classList.contains('tile') && clicking) draw(clickedItem, true);
 });
+
+
 itemsContainer.addEventListener('touchmove', function(event) {
   event.preventDefault();
   const touch= event.touches[0];
   const touchedItem = document.elementFromPoint(touch.clientX, touch.clientY);
-  if (touchedItem.classList.contains('tile')) {
-      if(random) touchedItem.style.backgroundColor = brutalColors[Math.floor(Math.random() * brutalColors.length)];
-      else touchedItem.style.backgroundColor = color;
-  }
+  if (touchedItem.classList.contains('tile')) draw(touchedItem, false);
 });
+
+function draw(clickedItem, playSound){
+  if(random) clickedItem.style.backgroundColor = brutalColors[Math.floor(Math.random() * brutalColors.length)];
+    else clickedItem.style.backgroundColor = color;
+    if(playSound){
+      let pop = new Audio("pop.flac");
+      pop.volume = 0.5;
+      pop.play();
+    }
+    
+}
 
 function updateBoard(dim){
   const row = document.createElement('div');
