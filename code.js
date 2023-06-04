@@ -3,12 +3,28 @@ const brightnessSlider = document.getElementById("brightness");
 const tileSlider = document.getElementById("size");
 const colorDisplay = document.getElementById("selected-color");
 const itemsContainer = document.getElementById("boxes-container");
+const randomizeButton = document.getElementById("randomize");
 
 let hue = 0;
 let brightness = 50;
 let color = 'hsl(' + hue + ', 100%, ' + brightness +'%)';
 let dimensions = 20;
-let isMouseDown = false;
+let random = false;
+const brutalColors = [
+  "#87CEEB",
+  "#A7DBD8",
+  "#BAFCA2",
+  "#90EE90",
+  "#FFDBF8",
+  "#F4D738",
+  "#FFA07A",
+  "#FF7A5C",
+  "#FFC0CB",
+  "#FFB2EF",
+  "#C4A1FF",
+  "#A388EE"
+];
+
 updateBoard(dimensions);
 brightnessSlider.style.backgroundColor ='hsl(' + 0 + ', 0%, 70%)';
 colorSlider.style.backgroundColor = color;
@@ -35,32 +51,44 @@ tileSlider.addEventListener("input", () =>{
     updateBoard(tileSlider.value);
 });
 
+randomizeButton.addEventListener("click", () =>{
+  random = !random;
+  if(random) colorDisplay.classList.add("rainbow-animation");
+  else colorDisplay.classList.remove("rainbow-animation");
+});
 
+itemsContainer.addEventListener('mouseover', function(event) {
+  const clickedItem = event.target;
+  if (clickedItem.classList.contains('tile')) { 
+    if(random) clickedItem.style.backgroundColor = brutalColors[Math.floor(Math.random() * brutalColors.length)];
+    else clickedItem.style.backgroundColor = color;
+  }
   
+});
+itemsContainer.addEventListener('touchmove', function(event) {
+  event.preventDefault();
+  const touch= event.touches[0];
+  const touchedItem = document.elementFromPoint(touch.clientX, touch.clientY);
+  if (touchedItem.classList.contains('tile')) {
+      if(random) touchedItem.style.backgroundColor = brutalColors[Math.floor(Math.random() * brutalColors.length)];
+      else touchedItem.style.backgroundColor = color;
+  }
+});
 
 function updateBoard(dim){
-    const row = document.createElement('div');
-    for(let i = 0; i < dim; i++){
-        const item = document.createElement('div');
-        item.classList.add("tile");
-        
-        row.appendChild(item);
-    }
-    row.classList.add("row");
-    for(let i = 0; i < dim; i++){
-        itemsContainer.appendChild(row.cloneNode(true));
-        
-    }
+  const row = document.createElement('div');
+  for(let i = 0; i < dim; i++){
+      const item = document.createElement('div');
+      item.classList.add("tile");
+      
+      row.appendChild(item);
+  }
+  row.classList.add("row");
+  for(let i = 0; i < dim; i++){
+      itemsContainer.appendChild(row.cloneNode(true));
+      
+  }
 
-    itemsContainer.addEventListener('mouseover', function(event) {
-        const clickedItem = event.target;
-        if (clickedItem.classList.contains('tile')) {
-          clickedItem.style.backgroundColor = color;
-        }
-      });
-
-
-    
-    
+  
 }
 

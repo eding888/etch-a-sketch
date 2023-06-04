@@ -49,11 +49,16 @@ body{
 #sliders > *{
     width: 75%;
     height: 20px;
+    font-weight: bold;
+    transition-property: width, height;
+    transition-duration: 0.5s;
+    
+}
+button{
+    cursor: pointer;
 }
 input{
     appearance: none;
-    transition-property: width, height;
-    transition-duration: 0.5s;
 }
 input::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -65,14 +70,31 @@ input::-webkit-slider-thumb {
     cursor: pointer;
   }
   
-input:hover{
+  #sliders > *:hover{
     width: 80%;
     height: 35px;
+}
+@keyframes rainbow{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 50% 100%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+.rainbow-animation{
+    background: linear-gradient(90deg, rgba(244,0,0,0.4290091036414566) 0%, rgba(5,255,38,0.7231267507002801) 35%, rgba(8,0,255,1) 100%);
+    background-size: 300% 300%;
+    animation: rainbow 5s ease-in-out infinite;
 }
 
 @media(max-width: 500px){
     body{
-        justify-content: flex-start;
+        justify-content: flex-start
     }
     #controls-container{
         display: flex;
@@ -93,6 +115,10 @@ input:hover{
         width: 40%;
         display: flex;
         justify-content: center;
+    }
+    #selected-color{
+        width: 70px;
+        height: 70px;
     }
 }
 .row{
