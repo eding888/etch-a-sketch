@@ -28,6 +28,7 @@ body{
     left: calc((((50svh + 50svw) / 2)/4 * -1) - 30px);
     top: -4px;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 input{
     appearance: none;
@@ -35,16 +36,22 @@ input{
     width: 75%;
     height: 20px;
     transition-property: width, height;
-    transition: 0.5s;
+    transition-duration: 0.5s;
 }
 #selected-color{
     height:50px;
     width:50px;
 }
+#sliders{
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 input::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 8px;
+    width: 6px;
     height: 15px;
     background-color: black;
     border-radius: 50%;
@@ -56,7 +63,25 @@ input:hover{
     height: 35px;
 }
 
-
+@media(max-width: 500px){
+    body{
+        justify-content: flex-start;
+    }
+    #controls-container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
+        position: relative;
+        top: calc(((50svh + 50svw) / 2) + 20px);
+        left: -3px;
+        width: 100%;
+    }
+    #selected-color{
+        margin-left: auto;
+        margin-right: 10px;
+    }
+}
 
 
 .brutal{
