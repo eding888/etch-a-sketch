@@ -1,17 +1,27 @@
 body{
+    font-family: sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0;
     height: 100svh;
-
+    background-color: #FFC0CB;
 }
 #boxes-container{
+    margin: 0 auto;
     aspect-ratio: 1/1;
-    
+    height: calc((50svh + 50svw) / 2);
     flex-shrink: 1;
-    flex-basis: 600px;
     
+    
+}
+#controls-container{
+    height: 100%;
+    width: calc(((50svh + 50svw) / 2)/4);
+    position: relative;
+    left: calc((((50svh + 50svw) / 2)/4 * -1) - 30px);
+    top: -4px;
 }
 
 .brutal{
