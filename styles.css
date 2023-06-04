@@ -18,7 +18,6 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    
 }
 #controls-container{
     background-color: #F4D738;
@@ -33,15 +32,9 @@ body{
     top: -4px;
     padding-top: 20px;
     padding-bottom: 20px;
+    transition: 0.2s;
 }
-input{
-    appearance: none;
-    background-color: red; 
-    width: 75%;
-    height: 20px;
-    transition-property: width, height;
-    transition-duration: 0.5s;
-}
+
 #selected-color{
     height:50px;
     width:50px;
@@ -51,6 +44,16 @@ input{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+}
+#sliders > *{
+    width: 75%;
+    height: 20px;
+}
+input{
+    appearance: none;
+    transition-property: width, height;
+    transition-duration: 0.5s;
 }
 input::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -100,16 +103,16 @@ input:hover{
 .tile{
     flex: auto;
     height: 100%;
-    border: black solid 2px;
-    background-color: white;
+    border: grey solid 1px;
 }
+    
+
 
 .brutal{
-    border: black solid 4px;
-    border-radius: 3%;
-    box-shadow: black 3px 3px 0px;
+    outline: black solid 3px;
+    border-radius: 2%;
+    box-shadow: black 6px 6px 0px;
 }
-.brutal-shadowless{
-    border: black solid 4px;
-    border-radius: 5px;
+.shadowless{
+    box-shadow: black 0px 0px 0px;
 }
