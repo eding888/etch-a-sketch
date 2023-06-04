@@ -8,6 +8,10 @@ body{
     height: 100svh;
     background-color: #FFC0CB;
 }
+#title{
+    padding: 10px;
+    background-color: #90EE90;
+}
 #boxes-container{
     position: relative;
     margin: 0 auto;
@@ -70,10 +74,11 @@ input::-webkit-slider-thumb {
     cursor: pointer;
   }
   
-  #sliders > *:hover{
+#sliders > *:hover{
     width: 80%;
     height: 35px;
 }
+
 @keyframes rainbow{
     0%{
         background-position: 0% 50%;

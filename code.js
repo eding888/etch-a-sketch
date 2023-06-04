@@ -10,6 +10,7 @@ let brightness = 50;
 let color = 'hsl(' + hue + ', 100%, ' + brightness +'%)';
 let dimensions = 20;
 let random = false;
+let clicking = false;
 const brutalColors = [
   "#87CEEB",
   "#A7DBD8",
@@ -57,9 +58,16 @@ randomizeButton.addEventListener("click", () =>{
   else colorDisplay.classList.remove("rainbow-animation");
 });
 
+document.addEventListener("mousedown", () =>{
+  clicking = true;
+})
+document.addEventListener("mouseup", () =>{
+  clicking = false;
+})
+
 itemsContainer.addEventListener('mouseover', function(event) {
   const clickedItem = event.target;
-  if (clickedItem.classList.contains('tile')) { 
+  if (clickedItem.classList.contains('tile') && clicking) { 
     if(random) clickedItem.style.backgroundColor = brutalColors[Math.floor(Math.random() * brutalColors.length)];
     else clickedItem.style.backgroundColor = color;
   }
